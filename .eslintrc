@@ -1,0 +1,11 @@
+{
+  "root": true,
+  "extends": ["@aliwind/eslint-config-wind"],
+  "rules": {
+    "no-underscore-dangle": "off",
+    "no-plusplus": "off",
+    "@typescript-eslint/no-parameter-properties": "off",
+    "no-useless-constructor": "off",
+    "max-classes-per-file": "off"
+  }
+}
