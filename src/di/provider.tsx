@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Container } from 'inversify';
-import { useSyncInit } from '../utils';
+import { useInit, useAssertValueNotChange } from '../utils';
 import {
   isServiceCtor,
   isClassProvider,
@@ -79,13 +79,15 @@ export function getDIProvider(opts: IDIConatinerOpts = {}) {
         DIContainer.get(getActualToken(provider.provide));
       }
     });
-    return { DIContainer };
+    return DIContainer;
   };
 
   const DIProvider: React.FC = ({ children }) => {
     // hierarchical DI systems
     const upperContainer = React.useContext(ctx);
-    const { DIContainer } = useSyncInit(DIContainerIniter(upperContainer));
+    useAssertValueNotChange(upperContainer);
+    const DIContainer = useInit(DIContainerIniter(upperContainer));
+    if (DIContainer === useInit.INIT_NOT_DONE) return null;
     return <ctx.Provider value={DIContainer}>{children}</ctx.Provider>;
   };
   return DIProvider;
