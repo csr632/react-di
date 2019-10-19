@@ -22,12 +22,16 @@ which generate injector dynamically (based on props)
 export function getDIProvider(opts: IDIConatinerOpts = {}) {
   const { providers = [], autoBindInjectable = false } = opts;
 
-  const DIContainerIniter = () => {
+  const DIContainerIniter = (upperContainer: Container | null) => () => {
     const DIContainer = new Container({
       defaultScope: 'Singleton',
       skipBaseClassChecks: true,
       autoBindInjectable,
     });
+    // hierarchical DI systems
+    if (upperContainer) {
+      DIContainer.parent = upperContainer;
+    }
     providers.forEach(provider => {
       if (isServiceCtor(provider)) {
         DIContainer.bind(provider).toSelf();
@@ -66,16 +70,22 @@ export function getDIProvider(opts: IDIConatinerOpts = {}) {
         );
       }
     });
+
+    // create instances immediately after DIContainer is inited
+    providers.forEach(provider => {
+      if (isServiceCtor(provider)) {
+        DIContainer.get(provider);
+      } else {
+        DIContainer.get(getActualToken(provider.provide));
+      }
+    });
     return { DIContainer };
   };
 
   const DIProvider: React.FC = ({ children }) => {
-    const { DIContainer } = useSyncInit(DIContainerIniter);
     // hierarchical DI systems
     const upperContainer = React.useContext(ctx);
-    if (upperContainer) {
-      DIContainer.parent = upperContainer;
-    }
+    const { DIContainer } = useSyncInit(DIContainerIniter(upperContainer));
     return <ctx.Provider value={DIContainer}>{children}</ctx.Provider>;
   };
   return DIProvider;
