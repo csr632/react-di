@@ -9,10 +9,11 @@
   "scripts": {
     "check": "tsc -p demo --noEmit",
     "clean": "rm -rf lib out demo-out .cache dist",
-    "build": "npm run clean && tsc -p ./src",
-    "watch": "npm run clean && tsc -p ./src -w",
+    "build": "npm run clean && tsc",
+    "watch": "npm run clean && tsc -w",
     "start": "npm run clean && parcel ./demo/index.html --open",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "storybook": "start-storybook"
   },
   "alias": {
     "react-rxdi": "./src"
@@ -29,11 +30,21 @@
   },
   "devDependencies": {
     "@aliwind/eslint-config-wind": "latest",
+    "@babel/core": "^7.6.4",
+    "@storybook/addon-actions": "^5.2.4",
+    "@storybook/addon-console": "^1.2.1",
+    "@storybook/addon-notes": "^5.2.4",
+    "@storybook/addon-storysource": "^5.2.4",
+    "@storybook/react": "^5.2.4",
+    "@types/jest": "^24.0.19",
     "@types/lodash": "^4.14.144",
     "@types/react": "^16.9.5",
     "@types/react-dom": "^16.9.1",
     "@types/react-router-dom": "^5.1.0",
+    "@types/storybook__react": "^4.0.2",
+    "babel-loader": "^8.0.6",
     "eslint": "^6.5.1",
+    "jest": "^24.9.0",
     "lodash": "^4.17.15",
     "parcel-bundler": "^1.6.1",
     "react": "^16.10.2",
@@ -41,6 +52,8 @@
     "react-router-dom": "^5.1.2",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^6.5.3",
+    "ts-jest": "^24.1.0",
+    "ts-loader": "^6.2.0",
     "typescript": "^3.6.4"
   },
   "keywords": []
