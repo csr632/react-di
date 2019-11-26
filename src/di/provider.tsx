@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Container } from 'inversify';
-import { useInit, useAssertValueNotChange } from '../utils';
+import { useInit, useAssertValueNotChange, useSyncInit } from '../utils';
 import {
   isServiceCtor,
   isClassProvider,
@@ -22,7 +22,7 @@ which generate injector dynamically (based on props)
 export function getDIProvider(opts: IDIConatinerOpts = {}) {
   const { providers = [], autoBindInjectable = false } = opts;
 
-  const DIContainerIniter = (upperContainer: Container | null) => () => {
+  const useDIContainerIniter = (upperContainer: Container | null) => () => {
     const DIContainer = new Container({
       defaultScope: 'Singleton',
       skipBaseClassChecks: true,
@@ -86,8 +86,7 @@ export function getDIProvider(opts: IDIConatinerOpts = {}) {
     // hierarchical DI systems
     const upperContainer = React.useContext(ctx);
     useAssertValueNotChange(upperContainer);
-    const DIContainer = useInit(DIContainerIniter(upperContainer));
-    if (DIContainer === useInit.INIT_NOT_DONE) return null;
+    const DIContainer = useSyncInit(useDIContainerIniter(upperContainer));
     return <ctx.Provider value={DIContainer}>{children}</ctx.Provider>;
   };
   return DIProvider;

@@ -1,11 +1,11 @@
 import React from 'react';
-import { inject, injectable, CustomToken, withDIProvider } from 'react-rxdi';
+import { inject, injectable, withDIProvider } from 'react-rxdi';
 
 interface IData {
   age: number;
 }
 
-const dataToken = new CustomToken<IData>('data token');
+const dataToken = Symbol('data token');
 
 @injectable()
 export class InjectDemoSvs {

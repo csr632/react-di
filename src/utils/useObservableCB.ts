@@ -13,7 +13,5 @@ export function useObservableCB<T>(
   useEffect(() => {
     const sub = observable.subscribe(next, error, complete);
     return () => sub.unsubscribe();
-    // next如果通过匿名函数传入，那么值会经常变化，这时候不应该重新执行subscribe
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [observable]);
+  }, [complete, error, next, observable]);
 }

@@ -23,6 +23,8 @@ class LogSvs {
 class CountSvs {
   private readonly addend$ = new Subject<number>();
 
+  // CountSvs don't need to know how to get LogSvs
+  // It just 'declare' its dependencies
   public constructor(private logService: LogSvs) {
     this.logService.log('creating CountSvs');
   }

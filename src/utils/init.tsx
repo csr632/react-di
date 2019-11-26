@@ -53,6 +53,7 @@ export const withInit = <Inited extends {}>(
 // https://reactjs.org/docs/hooks-faq.html#how-to-create-expensive-objects-lazily
 // init is called in render phase
 // not suitable for init that has side effect
+// https://github.com/Andarist/use-constant/issues/4
 export function useSyncInit<Inited extends {}>(
   initer: Inited | (() => Inited)
 ): Inited {

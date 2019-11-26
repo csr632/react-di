@@ -16,8 +16,12 @@ class Foo {
 @injectable()
 class Bar {
   // get foo instance from parent
-  constructor(foo: Foo) {
-    console.log('Creating Bar. foo:', foo);
+  constructor(private foo: Foo) {
+    console.log('Creating Bar');
+  }
+
+  say() {
+    console.log('Bar says: I got foo: ', this.foo);
   }
 }
 
@@ -27,6 +31,9 @@ export const HierarchicalDemo: React.FC = withDIProvider([Foo])(() => {
 
 const Child: React.FC = withDIProvider([Bar])(() => {
   // get foo instance from parent
-  const [foo] = useDIConsumer([Foo]);
+  const [bar] = useDIConsumer([Bar]);
+  useEffect(() => {
+    bar.say();
+  });
   return <h2>HierarchicalDemo</h2>;
 });

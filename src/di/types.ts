@@ -28,13 +28,13 @@ export class CustomToken<ValueType> {
   private static readonly tokenReflectName = '@@RXDI Token v1@@' as const;
 }
 
-export type GetValueTypeByToken<Token> = Token extends CustomToken<
-  infer ValueType
->
+export type GetValueTypeByToken<
+  Token extends IToken
+> = Token extends CustomToken<infer ValueType>
   ? ValueType
   : Token extends AbstractCtor<infer ValueType2>
   ? ValueType2
-  : Token extends IToken
+  : Token extends symbol
   ? any
   : never;
 // GetValueTypeByToken Example:
@@ -74,6 +74,8 @@ export function getActualToken(token: IToken): symbol {
   if (CustomToken.isCustomToken(token)) {
     return token.tokenId as symbol;
   }
+  // although token may be a class constructor here,
+  // we can treat it like symbol
   return token as symbol;
 }
 
@@ -102,6 +104,8 @@ export interface IValueProvider {
 }
 export interface IFactoryProvider {
   provide: IToken;
+  // angular also don't give type to useFactory
+  // https://github.com/angular/angular/blob/5de7960f019701e4e26dc6a7809c244ef94b5e30/packages/core/src/di/interface/provider.ts#L209
   useFactory: (...deps: any[]) => any;
   deps?: IToken[];
 }
