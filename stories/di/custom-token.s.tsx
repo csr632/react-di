@@ -22,7 +22,7 @@ const tokenLogSvs = new CustomToken<LogSvs>('I am token id for LogSvs');
 // differnt CustomToken object with same "token id" is equivalent!
 const tokenLogSvs2 = new CustomToken<LogSvs>('I am token id for LogSvs');
 
-export const CustomTokenDemo: React.FC = withDIProvider([
+export const Demo: React.FC = withDIProvider([
   { provide: tokenLogSvs, useClass: LogSvs },
 ])(() => {
   const [logSvs, logSvs2] = useDIConsumer([tokenLogSvs, tokenLogSvs2]);
@@ -39,3 +39,7 @@ export const CustomTokenDemo: React.FC = withDIProvider([
     </div>
   );
 });
+
+export default {
+  title: 'custom token',
+};

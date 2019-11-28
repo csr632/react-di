@@ -12,11 +12,11 @@ class LogSvs {
 }
 
 // This is a useful pattern to configure injectable services
-export function configLogSvs(prefix: string): IProvider {
+function configLogSvs(prefix: string): IProvider {
   return { provide: LogSvs, useFactory: () => new LogSvs(prefix) };
 }
 
-export const ConfigurableDemo: React.FC = withDIProvider([
+export const Demo: React.FC = withDIProvider([
   configLogSvs('configurable demo'),
 ])(() => {
   // DI consumers don't couple to the actual implementation.
@@ -34,3 +34,7 @@ export const ConfigurableDemo: React.FC = withDIProvider([
     </div>
   );
 });
+
+export default {
+  title: 'configurable',
+};

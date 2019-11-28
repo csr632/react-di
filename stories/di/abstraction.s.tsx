@@ -24,7 +24,7 @@ class ActualLogSvs extends LogSvs {
   }
 }
 
-export const AbstrationDemo: React.FC = withDIProvider([
+export const Demo: React.FC = withDIProvider([
   // Abstractions are bind to their implementations at application root
   {
     provide: LogSvs,
@@ -46,3 +46,7 @@ export const AbstrationDemo: React.FC = withDIProvider([
     </div>
   );
 });
+
+export default {
+  title: 'abstraction',
+};

@@ -39,7 +39,7 @@ class CountSvs {
   }
 }
 
-export const BasicDemo: React.FC = withDIProvider([CountSvs, LogSvs])(() => {
+export const Demo: React.FC = withDIProvider([CountSvs, LogSvs])(() => {
   const [countService] = useDIConsumer([CountSvs]);
   const sum = useObservable(() => countService.sum$, 0);
 
@@ -55,9 +55,6 @@ const Child: React.FC = () => {
   const [countService, logSvs] = useDIConsumer([CountSvs, LogSvs]);
   React.useEffect(() => {
     logSvs.log('Child mounted');
-    return () => {
-      logSvs.log('Child un-mounted');
-    };
   }, [logSvs]);
   return (
     <div>
@@ -71,4 +68,8 @@ const Child: React.FC = () => {
       </button>
     </div>
   );
+};
+
+export default {
+  title: 'basic',
 };

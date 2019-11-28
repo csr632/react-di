@@ -1,8 +1,6 @@
 import { configure } from '@storybook/react';
 import 'reflect-metadata';
 
-configure(require.context('../stories', true, /\.stories\.tsx?$/), module);
-
 // config console
 import '@storybook/addon-console';
 import { setConsoleOptions } from '@storybook/addon-console';
@@ -12,3 +10,19 @@ setConsoleOptions({
 import { addDecorator } from '@storybook/react';
 import { withConsole } from '@storybook/addon-console';
 addDecorator((storyFn, context) => withConsole()(storyFn)(context));
+
+// config addon-actions
+import { configureActions } from '@storybook/addon-actions';
+configureActions({
+  clearOnStoryChange: true,
+});
+
+// config looking
+import { addParameters } from '@storybook/react';
+addParameters({
+  options: {
+    // panelPosition: 'right',
+  },
+});
+
+configure(require.context('../stories', true, /\.s\.(tsx?|mdx)$/), module);

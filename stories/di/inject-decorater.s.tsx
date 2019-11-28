@@ -8,13 +8,13 @@ interface IData {
 const dataToken = Symbol('data token');
 
 @injectable()
-export class InjectDemoSvs {
+class InjectDemoSvs {
   constructor(@inject(dataToken) private data: IData) {
     console.log(`creating InjectDemoSvs. data:`, JSON.stringify(data));
   }
 }
 
-export const InjectDecoratorDemo: React.FC = withDIProvider([
+export const Demo: React.FC = withDIProvider([
   InjectDemoSvs,
   {
     provide: dataToken,
@@ -23,3 +23,7 @@ export const InjectDecoratorDemo: React.FC = withDIProvider([
 ])(() => {
   return <h2>InjectDecoratorDemo</h2>;
 });
+
+export default {
+  title: 'inject decorater',
+};

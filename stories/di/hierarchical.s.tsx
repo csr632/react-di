@@ -1,10 +1,5 @@
 import React, { useEffect } from 'react';
-import {
-  injectable,
-  CustomToken,
-  withDIProvider,
-  useDIConsumer,
-} from 'react-rxdi';
+import { injectable, withDIProvider, useDIConsumer } from 'react-rxdi';
 
 @injectable()
 class Foo {
@@ -25,7 +20,7 @@ class Bar {
   }
 }
 
-export const HierarchicalDemo: React.FC = withDIProvider([Foo])(() => {
+export const Demo: React.FC = withDIProvider([Foo])(() => {
   return <Child />;
 });
 
@@ -35,5 +30,9 @@ const Child: React.FC = withDIProvider([Bar])(() => {
   useEffect(() => {
     bar.say();
   });
-  return <h2>HierarchicalDemo</h2>;
+  return <h1>HierarchicalDemo</h1>;
 });
+
+export default {
+  title: 'hierarchical',
+};

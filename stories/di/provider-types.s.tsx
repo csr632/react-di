@@ -21,9 +21,9 @@ class LogSvs {
 // or you can use 'LogSvs' as shorthand
 const classProvider: IClassProvider = { provide: LogSvs, useClass: LogSvs };
 
-const anotherTokenForSameSvsInstance = Symbol('anotherTokenForSameSvsInstance');
+const aliasTokenForSameSvsInstance = Symbol('aliasTokenForSameSvsInstance');
 const existingProvider: IExistingProvider = {
-  provide: anotherTokenForSameSvsInstance,
+  provide: aliasTokenForSameSvsInstance,
   useExisting: LogSvs,
 };
 
@@ -55,7 +55,7 @@ const valueProvider: IValueProvider = {
   useValue: _,
 };
 
-export const ProviderTypesDemo: React.FC = withDIProvider([
+export const Demo: React.FC = withDIProvider([
   // equivalent to shorthand LogSvs
   classProvider,
   existingProvider,
@@ -64,7 +64,7 @@ export const ProviderTypesDemo: React.FC = withDIProvider([
 ])(() => {
   const [logSvs, logSvs2, countSvs, lodash] = useDIConsumer([
     LogSvs,
-    anotherTokenForSameSvsInstance,
+    aliasTokenForSameSvsInstance,
     CountSvs,
     lodashToken,
   ]);
@@ -83,3 +83,7 @@ export const ProviderTypesDemo: React.FC = withDIProvider([
     </div>
   );
 });
+
+export default {
+  title: 'provider types',
+};
