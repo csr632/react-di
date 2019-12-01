@@ -19,13 +19,14 @@
  
  What's worse, you have to be really careful about their order. If Container1 depends on Container2, Container2 must be put "above" Container1. You must read the implementation of all containers and make sure the order is right. Imagine 5 containers with dependency on each other.
 
- What's worse, if your containers have circular dependency, you must create some 'workaround' containers, throwing "single responsibility principle" out of the window. React provider have no tolerance with circular dependency.
+ What's worse, most of the tools out there are not good at handling circular dependency (when it is necessory). If your containers have circular dependency, you must create some 'unreasonable workaround containers', throwing "single responsibility principle" out of the window.
  */
 
 /** 
 With react-rxdi, we can avoid all of these. 
 react-rxdi use React context provider to broadcast **injector**, not services. The granularity is bigger. One injector can have multiple services in it.
 As long as services live in the same injector, they can get each other's reference! You don't need to care about the 'declare order'.
+rxdi makes it easy to workaround circular dependency, by using 'pluginHook'.
  */
 
 import React, { useEffect } from 'react';
@@ -41,7 +42,7 @@ class Foo implements WithSvsLevelPlugin {
   public qux!: Qux;
 
   pluginHook() {
-    // circular dependency workaround
+    // circular dependency
     const [qux] = useDIConsumer([Qux]);
     this.qux = qux;
   }

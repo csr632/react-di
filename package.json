@@ -54,6 +54,7 @@
     "react-router-dom": "^5.1.2",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^6.5.3",
+    "swr": "^0.1.12",
     "ts-jest": "^24.2.0",
     "ts-loader": "^6.2.1",
     "typescript": "^3.7.2"
