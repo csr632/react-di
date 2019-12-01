@@ -1,5 +1,10 @@
 import React, { useEffect } from 'react';
-import { withDIProvider, useDIConsumer, injectable } from 'react-rxdi';
+import { withDIContainer, useDIConsumer, injectable } from 'react-rxdi';
+
+// with dependency injection,
+// it is easy to follow the golden rule in object-oriented design:
+// depend on abstractions, don't depend on implementations.
+// (dependency inversion principle)
 
 abstract class LogSvs {
   public constructor() {
@@ -24,7 +29,7 @@ class ActualLogSvs extends LogSvs {
   }
 }
 
-export const Demo: React.FC = withDIProvider([
+export const Demo: React.FC = withDIContainer([
   // Abstractions are bind to their implementations at application root
   {
     provide: LogSvs,
@@ -34,6 +39,8 @@ export const Demo: React.FC = withDIProvider([
   // DI consumers don't couple to the actual implementation.
   // They should only depend on the abstraction.
   // The actual implementation is hidden by the abstraction.
+  // Benifit: we can inject different implementation in different envirenment (production, test, different user role, ...).
+  // And typescript do the type-check, ensuring we don't break the "contract".
   const [logSvs] = useDIConsumer([LogSvs]);
 
   useEffect(() => {

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import {
   CustomToken,
-  withDIProvider,
+  withDIContainer,
   useDIConsumer,
   injectable,
 } from 'react-rxdi';
@@ -22,7 +22,7 @@ const tokenLogSvs = new CustomToken<LogSvs>('I am token id for LogSvs');
 // differnt CustomToken object with same "token id" is equivalent!
 const tokenLogSvs2 = new CustomToken<LogSvs>('I am token id for LogSvs');
 
-export const Demo: React.FC = withDIProvider([
+export const Demo: React.FC = withDIContainer([
   { provide: tokenLogSvs, useClass: LogSvs },
 ])(() => {
   const [logSvs, logSvs2] = useDIConsumer([tokenLogSvs, tokenLogSvs2]);

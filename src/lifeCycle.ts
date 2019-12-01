@@ -1,7 +1,13 @@
 import { Subject, Observable } from 'rxjs';
 import { take, takeUntil } from 'rxjs/operators';
 import * as React from 'react';
-import { useAssertValueNotChange, useCompId } from './utils';
+import {
+  useAssertValueNotChange,
+  useCompId,
+  useSyncInit,
+  isObject,
+} from './utils';
+import { IContainerLevelPlugin } from './di';
 
 /* eslint-disable no-underscore-dangle */
 
@@ -53,11 +59,21 @@ export class LifeCycle {
     error?: (error: any) => void,
     complete?: () => void
   ) {
-    this.mount$.subscribe(() => {
+    if (this.state === 0) {
+      // should wait for mount event
+      this.mount$.subscribe(() => {
+        observable
+          .pipe(takeUntil(this.unMount$))
+          .subscribe(next, error, complete);
+      });
+    } else if (this.state === 1) {
+      // should subscribe immediately when component is active
       observable
         .pipe(takeUntil(this.unMount$))
         .subscribe(next, error, complete);
-    });
+    } else {
+      // should not subscribe after unMount
+    }
   }
 }
 
@@ -95,3 +111,29 @@ export function useBindLifeCycle(
     };
   }, [compId, lifeCycleInternal, setup]);
 }
+
+/**
+ * The `autoLifeCycle` property will be automatically
+ * bound to the lifecycle of
+ * its host component (the DIContainer HOC).
+ */
+export interface WithAutoLifeCycle {
+  autoLifeCycle: LifeCycle;
+}
+
+export const DIPluginAutoBindLifeCycle: IContainerLevelPlugin = allProvidedValues => {
+  const autoLifeCycles = useSyncInit(() => {
+    const result: LifeCycle[] = [];
+    allProvidedValues.forEach(({ value }) => {
+      if (isObject(value) && value.autoLifeCycle instanceof LifeCycle) {
+        result.push(value.autoLifeCycle);
+      }
+    });
+    return result;
+  });
+
+  autoLifeCycles.forEach(autoLifeCycle => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    useBindLifeCycle(autoLifeCycle);
+  });
+};

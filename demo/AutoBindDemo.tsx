@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { useObservable } from 'rxjs-hooks';
-import { withDIProvider, useDIConsumer } from 'react-rxdi';
+import { withDIContainer, useDIConsumer } from 'react-rxdi';
 import { CountSvs } from './service/CountSvs';
 import { configLogSvs } from './service/LogSvs';
 
-const AutoBindDemo: React.FC = withDIProvider({
+const AutoBindDemo: React.FC = withDIContainer({
   // Constructors with no parameters can be auto-bind
   autoBindInjectable: true,
   // configurable services can't be auto-bind. so provide it

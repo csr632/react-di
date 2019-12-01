@@ -11,12 +11,6 @@ import { addDecorator } from '@storybook/react';
 import { withConsole } from '@storybook/addon-console';
 addDecorator((storyFn, context) => withConsole()(storyFn)(context));
 
-// config addon-actions
-import { configureActions } from '@storybook/addon-actions';
-configureActions({
-  clearOnStoryChange: true,
-});
-
 // config looking
 import { addParameters } from '@storybook/react';
 addParameters({

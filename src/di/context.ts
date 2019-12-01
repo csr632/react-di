@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Container } from 'inversify';
+import { Container as Injector } from 'inversify';
 
-const ctx = React.createContext<Container | null>(null);
+const ctx = React.createContext<Injector | null>(null);
 ctx.displayName = `DIContainerContext`;
 
 export default ctx;

@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { useObservable } from 'rxjs-hooks';
 import { Link, Switch, Route, withRouter, Redirect } from 'react-router-dom';
-import { withDIProvider, useDIConsumer, useBindLifeCycle } from 'react-rxdi';
+import { withDIContainer, useDIConsumer, useBindLifeCycle } from 'react-rxdi';
 import { CountSvs } from './service/CountSvs';
 import { configLogSvs } from './service/LogSvs';
 import { PollingSvs } from './service/PollingSvs';
 
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
-const HierarchicalDemo: React.FC = withDIProvider([
+const HierarchicalDemo: React.FC = withDIContainer([
   configLogSvs('Hierarchical demo: '),
 ])(
   withRouter(({ match }) => {
@@ -38,7 +38,7 @@ const HierarchicalDemo: React.FC = withDIProvider([
 export default HierarchicalDemo;
 
 // Child1 use parent's LogSvs
-const Child1: React.FC = withDIProvider([CountSvs])(() => {
+const Child1: React.FC = withDIContainer([CountSvs])(() => {
   const [countService] = useDIConsumer([CountSvs]);
   const sum = useObservable(() => countService.sum$, 0);
   return (
@@ -58,7 +58,7 @@ const Child1: React.FC = withDIProvider([CountSvs])(() => {
 });
 
 // Child2 has its own LogSvs
-const Child2: React.FC = withDIProvider([
+const Child2: React.FC = withDIContainer([
   CountSvs,
   configLogSvs('Hierarchical Child2: '),
   PollingSvs,

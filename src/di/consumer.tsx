@@ -13,21 +13,21 @@ type RetType<Args extends [IToken, ...IToken[]]> = {
 export function useDIConsumer<Tokens extends [IToken, ...IToken[]]>(
   tokens: Tokens
 ): RetType<Tokens> {
-  const container = React.useContext(ctx);
-  if (!container) {
+  const injector = React.useContext(ctx);
+  if (!injector) {
     throw new Error(
       `Can't find DI container.
-      You must use withDIProvider somewhere above the component tree.`
+      You must use withDIContainer somewhere above the component tree.`
     );
   }
-  useAssertValueNotChange(container);
+  useAssertValueNotChange(injector);
   /* eslint-disable react-hooks/exhaustive-deps */
   const result: any = React.useMemo(
     () =>
       tokens.map(oneToken => {
         const actualToken = getActualToken(oneToken);
         try {
-          return container.get(actualToken);
+          return injector.get(actualToken);
         } catch (error) {
           console.error(
             `Fail to get value from injector. \nToken:`,
@@ -41,14 +41,14 @@ export function useDIConsumer<Tokens extends [IToken, ...IToken[]]>(
           ) {
             throw new Error(
               `Can't find value to inject.
-              You should provide it somewhere above the component tree. (use withDIProvider)
+              You should provide it somewhere above the component tree. (use withDIContainer)
               See the console.error above for more info.`
             );
           }
           throw error;
         }
       }),
-    [container, ...tokens]
+    [injector, ...tokens]
   );
   return result;
 }

@@ -2,8 +2,8 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "outDir": "../demo-out",
-    "baseUrl": ".",
     "rootDir": "../",
+    "baseUrl": ".",
     "noImplicitAny": false,
     "paths": {
       "react-rxdi": ["../src"]

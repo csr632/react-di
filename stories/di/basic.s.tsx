@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  withDIProvider,
+  withDIContainer,
   useDIConsumer,
   useObservable,
   injectable,
@@ -39,8 +39,9 @@ class CountSvs {
   }
 }
 
-export const Demo: React.FC = withDIProvider([CountSvs, LogSvs])(() => {
+export const Demo: React.FC = withDIContainer([CountSvs, LogSvs])(() => {
   const [countService] = useDIConsumer([CountSvs]);
+  // auto re-render when the observable emit
   const sum = useObservable(() => countService.sum$, 0);
 
   return (

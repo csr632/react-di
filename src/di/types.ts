@@ -4,6 +4,7 @@ import { isObject } from '../utils';
 export interface IDIConatinerOpts {
   providers?: IProvider[];
   autoBindInjectable?: boolean;
+  plugins?: IContainerLevelPlugin[];
 }
 
 /**
@@ -109,35 +110,66 @@ export interface IFactoryProvider {
   useFactory: (...deps: any[]) => any;
   deps?: IToken[];
 }
+export type GetTokenTypeByProvider<
+  Provider extends IProvider
+> = Provider extends ServiceCtor
+  ? Provider
+  : Provider extends IClassProvider
+  ? Provider['provide']
+  : Provider extends IExistingProvider
+  ? Provider['provide']
+  : Provider extends IValueProvider
+  ? Provider['provide']
+  : Provider extends IFactoryProvider
+  ? Provider['provide']
+  : never;
 
-export function isServiceCtor(value: any): value is ServiceCtor {
+export function isServiceCtor(value: unknown): value is ServiceCtor {
   return (
     typeof value === 'function' &&
     isObject(value.prototype) &&
     value.prototype.constructor === value
   );
 }
-export function isClassProvider(value: any): value is IClassProvider {
+export function isClassProvider(value: unknown): value is IClassProvider {
   return (
     isObject(value) && isToken(value.provide) && isServiceCtor(value.useClass)
   );
 }
-export function isExistingProvider(value: any): value is IExistingProvider {
+export function isExistingProvider(value: unknown): value is IExistingProvider {
   return (
     isObject(value) && isToken(value.provide) && isToken(value.useExisting)
   );
 }
-export function isValueProvider(value: any): value is IValueProvider {
+export function isValueProvider(value: unknown): value is IValueProvider {
   return (
     isObject(value) &&
     isToken(value.provide) &&
     {}.hasOwnProperty.call(value, 'useValue')
   );
 }
-export function isFactoryProvider(value: any): value is IFactoryProvider {
+export function isFactoryProvider(value: unknown): value is IFactoryProvider {
   return (
     isObject(value) &&
     isToken(value.provide) &&
     typeof value.useFactory === 'function'
   );
+}
+
+/**
+ * These plugins are called as React hook for container component.
+ * This is the plugin mechanism of DIContainer
+ */
+export type IContainerLevelPlugin = (
+  allProvidedValues: IAllProvidedValues
+) => void;
+export type ISvsLevelPlugin = () => void;
+
+export type IAllProvidedValues = {
+  provider: IProvider;
+  value: unknown;
+}[];
+
+export interface WithSvsLevelPlugin {
+  pluginHook: ISvsLevelPlugin;
 }

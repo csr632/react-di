@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useObservable } from 'rxjs-hooks';
-import { withDIProvider, useDIConsumer, CustomToken } from 'react-rxdi';
+import { withDIContainer, useDIConsumer, CustomToken } from 'react-rxdi';
 import { CarSvsToken, CarSvs } from './service/CarSvs';
 import { LodashProvider, LodashToken } from './service/LodashProvider';
 import LogSvs, { configLogSvs } from './service/LogSvs';
@@ -10,7 +10,7 @@ import { CountSvs } from './service/CountSvs';
 
 // const Providers
 
-const ProvidersDemo: React.FC = withDIProvider([
+const ProvidersDemo: React.FC = withDIContainer([
   configLogSvs('Providers demo: '),
   // ValueProvider demo
   LodashProvider,
@@ -29,7 +29,7 @@ const ProvidersDemo: React.FC = withDIProvider([
 export default ProvidersDemo;
 
 // Child1 use parent's LogSvs
-const Child1: React.FC = withDIProvider([
+const Child1: React.FC = withDIContainer([
   // FactoryProvider demo
   {
     provide: CarSvsToken,
@@ -54,7 +54,7 @@ const Child1: React.FC = withDIProvider([
 const customCarToken = new CustomToken<CarSvs>(Symbol('customCarToken'));
 
 // Child2 has its own CountSvs
-const Child2: React.FC = withDIProvider([
+const Child2: React.FC = withDIContainer([
   // ClassProvider demo
   {
     provide: CountSvs,

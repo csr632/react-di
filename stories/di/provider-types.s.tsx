@@ -3,7 +3,7 @@ import {
   IValueProvider,
   CustomToken,
   IExistingProvider,
-  withDIProvider,
+  withDIContainer,
   IClassProvider,
   IFactoryProvider,
   useDIConsumer,
@@ -55,7 +55,7 @@ const valueProvider: IValueProvider = {
   useValue: _,
 };
 
-export const Demo: React.FC = withDIProvider([
+export const Demo: React.FC = withDIContainer([
   // equivalent to shorthand LogSvs
   classProvider,
   existingProvider,

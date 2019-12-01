@@ -6,6 +6,7 @@
     "no-plusplus": "off",
     "@typescript-eslint/no-parameter-properties": "off",
     "no-useless-constructor": "off",
-    "max-classes-per-file": "off"
+    "max-classes-per-file": "off",
+    "class-methods-use-this": "off"
   }
 }

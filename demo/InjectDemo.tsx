@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { withDIProvider, useDIConsumer } from 'react-rxdi';
+import { withDIContainer, useDIConsumer } from 'react-rxdi';
 import { configLogSvs } from './service/LogSvs';
 import { injectNumberToken, InjectDemoSvs } from './service/InjectDemoSvs';
 
-const InjectDemo: React.FC = withDIProvider([
+const InjectDemo: React.FC = withDIContainer([
   configLogSvs('Inject demo: '),
   {
     provide: injectNumberToken,

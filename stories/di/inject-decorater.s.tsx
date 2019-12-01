@@ -1,5 +1,5 @@
 import React from 'react';
-import { inject, injectable, withDIProvider } from 'react-rxdi';
+import { inject, injectable, withDIContainer } from 'react-rxdi';
 
 interface IData {
   age: number;
@@ -14,7 +14,7 @@ class InjectDemoSvs {
   }
 }
 
-export const Demo: React.FC = withDIProvider([
+export const Demo: React.FC = withDIContainer([
   InjectDemoSvs,
   {
     provide: dataToken,

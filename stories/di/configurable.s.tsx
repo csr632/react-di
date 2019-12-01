@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { withDIProvider, useDIConsumer, IProvider } from 'react-rxdi';
+import { withDIContainer, useDIConsumer, IProvider } from 'react-rxdi';
 
 class LogSvs {
   public constructor(private prefix: string) {
@@ -16,7 +16,7 @@ function configLogSvs(prefix: string): IProvider {
   return { provide: LogSvs, useFactory: () => new LogSvs(prefix) };
 }
 
-export const Demo: React.FC = withDIProvider([
+export const Demo: React.FC = withDIContainer([
   configLogSvs('configurable demo'),
 ])(() => {
   // DI consumers don't couple to the actual implementation.

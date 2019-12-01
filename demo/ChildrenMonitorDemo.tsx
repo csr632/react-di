@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { useObservable } from 'rxjs-hooks';
-import { withDIProvider, useDIConsumer, useBindLifeCycle } from 'react-rxdi';
+import { withDIContainer, useDIConsumer, useBindLifeCycle } from 'react-rxdi';
 import { configLogSvs } from './service/LogSvs';
 import { ChildrenMonitor, useReportLifeCycle } from './service/ChildrenMonitor';
 
-const ChildrenMonitorDemo: React.FC = withDIProvider([
+const ChildrenMonitorDemo: React.FC = withDIContainer([
   configLogSvs('ChildrenMonitorDemo: '),
   ChildrenMonitor,
 ])(() => {
