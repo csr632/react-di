@@ -9,6 +9,8 @@ const dataToken = Symbol('data token');
 
 @injectable()
 class InjectDemoSvs {
+  // when you are not using class as token, you should use `@inject`
+  // to declare the DI dependencies
   constructor(@inject(dataToken) private data: IData) {
     console.log(`creating InjectDemoSvs. data:`, JSON.stringify(data));
   }
