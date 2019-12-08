@@ -1,4 +1,4 @@
-import { injectable, withDIContainer, WithDIContainerHook } from 'react-rxdi';
+import { injectable, withDIContainer, WithDIContainerHook } from 'react-svs-di';
 import * as Rx from 'rxjs';
 import React, { useState, useEffect } from 'react';
 

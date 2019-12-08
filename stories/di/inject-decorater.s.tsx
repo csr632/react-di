@@ -1,5 +1,5 @@
 import React from 'react';
-import { inject, injectable, withDIContainer } from 'react-rxdi';
+import { inject, injectable, withDIContainer } from 'react-svs-di';
 
 interface IData {
   age: number;

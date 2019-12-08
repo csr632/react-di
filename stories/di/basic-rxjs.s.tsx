@@ -4,7 +4,7 @@ import {
   useDIConsumer,
   useObservable,
   injectable,
-} from 'react-rxdi';
+} from 'react-svs-di';
 import { Subject } from 'rxjs';
 import { scan } from 'rxjs/operators';
 

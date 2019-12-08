@@ -4,7 +4,7 @@ import {
   withDIContainer,
   useDIConsumer,
   injectable,
-} from 'react-rxdi';
+} from 'react-svs-di';
 
 @injectable()
 class LogSvs {

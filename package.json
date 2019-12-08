@@ -1,5 +1,5 @@
 {
-  "name": "react-rxdi",
+  "name": "react-svs-di",
   "version": "0.1.0",
   "description": "",
   "main": "lib/index.js",
@@ -16,7 +16,7 @@
     "storybook": "start-storybook"
   },
   "alias": {
-    "react-rxdi": "./src"
+    "react-svs-di": "./src"
   },
   "dependencies": {
     "inversify": "^5.0.1"

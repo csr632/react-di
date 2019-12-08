@@ -1,5 +1,5 @@
 /**
- * react-rxdi provide great interoperability with react hooks.
+ * react-svs-di provide great interoperability with react hooks.
  *
  * Inside services, you can define hooks for consumers ,
  * to achieve better code cohesion and encapsulation.
@@ -18,7 +18,7 @@ import {
   withDIContainer,
   useObservable,
   useDIConsumer,
-} from 'react-rxdi';
+} from 'react-svs-di';
 import { Subject, merge } from 'rxjs';
 import useSWR from 'swr';
 import { scan, mapTo } from 'rxjs/operators';

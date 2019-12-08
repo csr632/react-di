@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { withDIContainer, useDIConsumer } from 'react-rxdi';
+import { withDIContainer, useDIConsumer } from 'react-svs-di';
 import { configLogSvs } from './service/LogSvs';
 import { injectNumberToken, InjectDemoSvs } from './service/InjectDemoSvs';
 

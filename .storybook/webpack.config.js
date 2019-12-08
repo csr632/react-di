@@ -18,6 +18,6 @@ module.exports = ({ config }) => {
     exclude: [/node_modules/],
     enforce: 'pre',
   });
-  config.resolve.alias['react-rxdi'] = path.resolve(__dirname, '../src');
+  config.resolve.alias['react-svs-di'] = path.resolve(__dirname, '../src');
   return config;
 };

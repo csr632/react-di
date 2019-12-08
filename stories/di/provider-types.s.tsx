@@ -8,7 +8,7 @@ import {
   IFactoryProvider,
   useDIConsumer,
   injectable,
-} from 'react-rxdi';
+} from 'react-svs-di';
 import _ from 'lodash';
 
 @injectable()

@@ -3,7 +3,7 @@ import {
   LifeCycle,
   withDIContainer,
   WithAutoLifeCycle,
-} from 'react-rxdi';
+} from 'react-svs-di';
 import * as Rx from 'rxjs';
 import React, { useState } from 'react';
 

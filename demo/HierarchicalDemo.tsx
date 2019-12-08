@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useObservable } from 'rxjs-hooks';
 import { Link, Switch, Route, withRouter, Redirect } from 'react-router-dom';
-import { withDIContainer, useDIConsumer, useBindLifeCycle } from 'react-rxdi';
+import { withDIContainer, useDIConsumer, useBindLifeCycle } from 'react-svs-di';
 import { CountSvs } from './service/CountSvs';
 import { configLogSvs } from './service/LogSvs';
 import { PollingSvs } from './service/PollingSvs';

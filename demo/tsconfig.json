@@ -20,8 +20,8 @@
     "rootDir": "..",
     "outDir": "../demo-out",
     "paths": {
-      "react-rxdi": ["../src"],
-      "react-rxdi/*": ["../src/*"]
+      "react-svs-di": ["../src"],
+      "react-svs-di/*": ["../src/*"]
     }
   }
 }

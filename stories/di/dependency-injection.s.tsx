@@ -4,7 +4,7 @@ import {
   useDIConsumer,
   injectable,
   SharedState,
-} from 'react-rxdi';
+} from 'react-svs-di';
 
 @injectable()
 class LogSvs {
@@ -21,7 +21,7 @@ class LogSvs {
 class CountSvs {
   // CountSvs don't need to know how to get LogSvs
   // It just 'declare' its dependencies.
-  // and react-rxdi injector will handle it!
+  // and react-svs-di injector will handle it!
   public constructor(private logService: LogSvs) {
     this.logService.log('creating CountSvs');
   }

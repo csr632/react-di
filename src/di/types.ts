@@ -17,14 +17,14 @@ export class CustomToken<ValueType> {
   constructor(public readonly tokenId: string | symbol) {}
 
   // Don't use instanceOf, use Reflection instead.
-  // Because user may have multi version of react-rxdi
+  // Because user may have multi version of react-svs-di
   public static isCustomToken(value: any): value is CustomToken<any> {
     return (
       isObject(value) && value._reflectName === CustomToken.tokenReflectName
     );
   }
 
-  private static readonly tokenReflectName = '@@react-rxdi Token v1@@' as const;
+  private static readonly tokenReflectName = '@@react-svs-di Token v1@@' as const;
   private readonly _reflectName = CustomToken.tokenReflectName;
 }
 

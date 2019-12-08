@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { injectable, withDIContainer, useDIConsumer } from 'react-rxdi';
+import { injectable, withDIContainer, useDIConsumer } from 'react-svs-di';
 
 let fooCount = 0;
 

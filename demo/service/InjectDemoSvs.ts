@@ -1,4 +1,4 @@
-import { inject, injectable, CustomToken } from 'react-rxdi';
+import { inject, injectable, CustomToken } from 'react-svs-di';
 import LogSvs from './LogSvs';
 
 export const injectNumberToken = new CustomToken<number>('injectNumberToken');

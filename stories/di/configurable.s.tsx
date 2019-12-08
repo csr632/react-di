@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { withDIContainer, useDIConsumer, IProvider } from 'react-rxdi';
+import { withDIContainer, useDIConsumer, IProvider } from 'react-svs-di';
 
 class LogSvs {
   public constructor(private prefix: string) {

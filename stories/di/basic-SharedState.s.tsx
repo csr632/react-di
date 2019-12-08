@@ -1,5 +1,5 @@
 /**
- * react-rxdi provide great interoperability with react hooks.
+ * react-svs-di provide great interoperability with react hooks.
  *
  * Inside services, you can define hooks for consumers,
  * to achieve better code cohesion and encapsulation.
@@ -12,8 +12,8 @@
  */
 
 import React from 'react';
-import { injectable, withDIContainer, useDIConsumer } from 'react-rxdi';
-import { SharedState } from 'react-rxdi';
+import { injectable, withDIContainer, useDIConsumer } from 'react-svs-di';
+import { SharedState } from 'react-svs-di';
 
 @injectable()
 class CountSvs {

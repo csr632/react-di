@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { withDIContainer, useDIConsumer, injectable } from 'react-rxdi';
+import { withDIContainer, useDIConsumer, injectable } from 'react-svs-di';
 
 // with dependency injection,
 // it is easy to follow the golden rule in object-oriented design:

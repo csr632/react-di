@@ -1,5 +1,5 @@
 import * as _ from 'lodash';
-import { CustomToken, IValueProvider } from 'react-rxdi';
+import { CustomToken, IValueProvider } from 'react-svs-di';
 
 export const LodashToken = new CustomToken<typeof _>('@@lodash svs@@');
 

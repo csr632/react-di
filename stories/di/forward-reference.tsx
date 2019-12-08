@@ -12,7 +12,7 @@ import {
   useDIConsumer,
   inject,
   forwardRef,
-} from 'react-rxdi';
+} from 'react-svs-di';
 
 @injectable()
 class Foo {

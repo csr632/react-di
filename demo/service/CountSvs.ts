@@ -1,4 +1,4 @@
-import { injectable } from 'react-rxdi';
+import { injectable } from 'react-svs-di';
 import { Subject } from 'rxjs';
 import { scan } from 'rxjs/operators';
 import LogSvs from './LogSvs';

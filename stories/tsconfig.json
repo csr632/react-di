@@ -6,7 +6,7 @@
     "baseUrl": ".",
     "noImplicitAny": false,
     "paths": {
-      "react-rxdi": ["../src"]
+      "react-svs-di": ["../src"]
     }
   },
   "include": ["./**/*"]

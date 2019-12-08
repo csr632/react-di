@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useObservable } from 'rxjs-hooks';
-import { withDIContainer, useDIConsumer, CustomToken } from 'react-rxdi';
+import { withDIContainer, useDIConsumer, CustomToken } from 'react-svs-di';
 import { CarSvsToken, CarSvs } from './service/CarSvs';
 import { LodashProvider, LodashToken } from './service/LodashProvider';
 import LogSvs, { configLogSvs } from './service/LogSvs';

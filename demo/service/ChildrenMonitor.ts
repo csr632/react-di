@@ -3,7 +3,7 @@ import {
   ELifeCycle,
   LifeCycle,
   useBindLifeCycle,
-} from 'react-rxdi';
+} from 'react-svs-di';
 import { ConnectableObservable, Subject, merge } from 'rxjs';
 import {
   scan,
@@ -13,7 +13,7 @@ import {
   mapTo,
 } from 'rxjs/operators';
 
-import { useAssertValueNotChange, useSyncInit } from 'react-rxdi/utils';
+import { useAssertValueNotChange, useSyncInit } from 'react-svs-di/utils';
 import LogSvs from './LogSvs';
 
 interface ILifeCycleCollectorEvent<CompDesc> {

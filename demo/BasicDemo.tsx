@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useObservable } from 'rxjs-hooks';
-import { withDIContainer, useDIConsumer } from 'react-rxdi';
+import { withDIContainer, useDIConsumer } from 'react-svs-di';
 import { CountSvs } from './service/CountSvs';
 import LogSvs, { configLogSvs } from './service/LogSvs';
 

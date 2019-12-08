@@ -23,10 +23,10 @@
  */
 
 /** 
-With react-rxdi, we can avoid all of these. 
-react-rxdi use React context provider to broadcast **injector**, not services. The granularity is bigger. One injector can have multiple services in it.
+With react-svs-di, we can avoid all of these. 
+react-svs-di use React context provider to broadcast **injector**, not services. The granularity is bigger. One injector can have multiple services in it.
 As long as services live in the same injector, they can get each other's reference! You don't need to care about the 'declare order'.
-react-rxdi makes it easy to workaround circular dependency, by using 'DIContainerHook'.
+react-svs-di makes it easy to workaround circular dependency, by using 'DIContainerHook'.
  */
 
 import React, { useEffect } from 'react';
@@ -35,7 +35,7 @@ import {
   withDIContainer,
   useDIConsumer,
   WithDIContainerHook,
-} from 'react-rxdi';
+} from 'react-svs-di';
 
 @injectable()
 class Foo implements WithDIContainerHook {

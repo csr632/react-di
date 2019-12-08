@@ -1,6 +1,6 @@
 import { Subject, timer, from } from 'rxjs';
 import { switchMap, takeUntil } from 'rxjs/operators';
-import { injectable, LifeCycle } from 'react-rxdi';
+import { injectable, LifeCycle } from 'react-svs-di';
 import LogSvs from './LogSvs';
 
 // PollingSvs demonstrate

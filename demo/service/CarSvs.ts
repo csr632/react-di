@@ -1,4 +1,4 @@
-import { CustomToken } from 'react-rxdi';
+import { CustomToken } from 'react-svs-di';
 import LogSvs from './LogSvs';
 
 export class CarSvs {

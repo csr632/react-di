@@ -1,4 +1,4 @@
-import { injectable, IProvider } from 'react-rxdi';
+import { injectable, IProvider } from 'react-svs-di';
 
 // LogSvs demonstrate
 // how can a service hidden by an abstraction
