@@ -12,7 +12,7 @@ import {
 } from './types';
 import ctx from './context';
 import { DIPluginAutoBindLifeCycle } from '../lifeCycle';
-import { SvsLevelPlugin } from './svs-level-plugin';
+import { ContainerHookPlugin } from './container-hook-plugin';
 import { PluginExecutor } from './plugin-executor';
 
 /*
@@ -26,7 +26,7 @@ export function getDIContainer(opts: IDIConatinerOpts = {}) {
   const { providers = [], autoBindInjectable = false, plugins = [] } = opts;
 
   // add build-in plugins
-  plugins.unshift(DIPluginAutoBindLifeCycle, SvsLevelPlugin);
+  plugins.unshift(DIPluginAutoBindLifeCycle, ContainerHookPlugin);
 
   const useDIContainerIniter = (upperContainer: Injector | null) => () => {
     const injector = new Injector({

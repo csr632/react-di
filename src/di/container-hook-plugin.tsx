@@ -2,7 +2,7 @@ import { IContainerLevelPlugin, IDIContainerHook } from './types';
 import { useSyncInit, isObject } from '../utils';
 
 // use a ContainerLevelPlugin to implement SvsLevelPlugin
-export const SvsLevelPlugin: IContainerLevelPlugin = allProvidedValues => {
+export const ContainerHookPlugin: IContainerLevelPlugin = allProvidedValues => {
   const svsPlugins = useSyncInit(() => {
     const result: IDIContainerHook[] = [];
     allProvidedValues.forEach(({ value }) => {

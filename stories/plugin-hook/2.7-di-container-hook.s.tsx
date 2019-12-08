@@ -48,5 +48,5 @@ const Child: React.FC = withDIContainer([LifeCycleMonitorSvs])(() => {
 });
 
 export default {
-  title: 'plugin-hook/container-hook',
+  title: 'plugin-hook: container-hook',
 };

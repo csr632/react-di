@@ -13,7 +13,8 @@
     "watch": "npm run clean && tsc -w",
     "start": "npm run clean && parcel ./demo/index.html --open",
     "prepublishOnly": "npm run build",
-    "storybook": "start-storybook"
+    "storybook": "start-storybook",
+    "deploy-gh": "storybook-to-ghpages --out=gh-out"
   },
   "alias": {
     "react-svs-di": "./src"
@@ -36,6 +37,7 @@
     "@storybook/addon-storysource": "^5.2.6",
     "@storybook/preset-typescript": "^1.1.0",
     "@storybook/react": "^5.2.6",
+    "@storybook/storybook-deployer": "^2.8.1",
     "@types/jest": "^24.0.23",
     "@types/lodash": "^4.14.149",
     "@types/node": "^12.12.14",

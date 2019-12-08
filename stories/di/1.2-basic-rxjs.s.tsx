@@ -62,5 +62,5 @@ export const Demo: React.FC = withDIContainer([CountSvs])(() => {
 });
 
 export default {
-  title: 'basic:rxjs version',
+  title: 'basic: rxjs version',
 };

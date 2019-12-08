@@ -64,5 +64,5 @@ const Child: React.FC = withDIContainer([LifeCycleMonitorSvs])(() => {
 });
 
 export default {
-  title: 'life-cycle/basic',
+  title: 'life cycle to rxjs',
 };

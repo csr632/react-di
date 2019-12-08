@@ -83,5 +83,5 @@ export const Demo: React.FC = withDIContainer([DataSvs])(() => {
 });
 
 export default {
-  title: 'plugin-hook/consumer-hook',
+  title: 'plugin-hook: consumer-hook',
 };

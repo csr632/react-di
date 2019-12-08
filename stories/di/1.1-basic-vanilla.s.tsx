@@ -69,5 +69,5 @@ export const Demo: React.FC = withDIContainer([CountSvs])(() => {
 });
 
 export default {
-  title: 'basic: SharedState version',
+  title: 'basic: vanilla version',
 };
