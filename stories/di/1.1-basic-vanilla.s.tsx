@@ -12,8 +12,12 @@
  */
 
 import React from 'react';
-import { injectable, withDIContainer, useDIConsumer } from 'react-svs-di';
-import { SharedState } from 'react-svs-di';
+import {
+  injectable,
+  withDIContainer,
+  useDIConsumer,
+  SharedState,
+} from 'react-svs-di';
 
 @injectable()
 class CountSvs {

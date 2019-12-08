@@ -26,10 +26,17 @@ configure(require.context('../stories', true, /\.s\.(tsx?|mdx)$/), module);
 addParameters({
   options: {
     storySort: (a, b) => {
-      debugger
       const fileNameA = a[1].parameters.fileName.split(/(\\|\/)/g).pop();
       const fileNameB = b[1].parameters.fileName.split(/(\\|\/)/g).pop();
       return fileNameA.localeCompare(fileNameB);
     },
+  },
+});
+
+// theme
+import theme from './theme';
+addParameters({
+  options: {
+    theme: theme,
   },
 });

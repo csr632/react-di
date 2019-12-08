@@ -11,7 +11,7 @@
     "clean": "rm -rf lib out demo-out .cache dist",
     "build": "npm run clean && tsc",
     "watch": "npm run clean && tsc -w",
-    "start": "npm run clean && parcel ./demo/index.html --open",
+    "start": "npm run clean && npm run storybook",
     "prepublishOnly": "npm run build",
     "storybook": "start-storybook",
     "deploy-gh": "storybook-to-ghpages --out=gh-out"
@@ -20,13 +20,13 @@
     "react-svs-di": "./src"
   },
   "dependencies": {
-    "inversify": "^5.0.1"
+    "inversify": "^5.0.1",
+    "rxjs": "^6.5.3"
   },
   "peerDependencies": {
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "reflect-metadata": "^0.1.13",
-    "rxjs": "^6.5.3"
+    "reflect-metadata": "^0.1.13"
   },
   "devDependencies": {
     "@aliwind/eslint-config-wind": "latest",
