@@ -1,6 +1,6 @@
 # react-svs-di
 
-react-svs-di is a react state managent library. It helps you build a robust data layer for your app. It comes with these features:
+react-svs-di is a react state managent library. It helps you to build a robust data layer for your app. It comes with these features:
 
 - Typescript first. Get full intellisense and type-checking when:
   - Subscribe shared state
@@ -91,7 +91,7 @@ export const Demo: React.FC = withDIContainer([CountSvs])(() => {
 - Component ask for some service.
   - Component can 'use' service's state to render view.
   - Component can call react hooks provided by the service.
-  - Component call side effect in it's event handler.
+  - Component can call side effect in it's event handler.
     > The service should be provided **above** the component.
 - If some side effects change some shared states. Components (that 'use' the shared states) will re-render automatically.
 - A service can ask for other services(dependency injection). And call other services' procedures.
