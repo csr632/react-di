@@ -2,11 +2,9 @@ import React from 'react';
 import {
   withDIContainer,
   useDIConsumer,
-  useObservable,
   injectable,
+  SharedState,
 } from 'react-rxdi';
-import { Subject } from 'rxjs';
-import { scan } from 'rxjs/operators';
 
 @injectable()
 class LogSvs {
@@ -21,28 +19,29 @@ class LogSvs {
 
 @injectable()
 class CountSvs {
-  private readonly addend$ = new Subject<number>();
-
   // CountSvs don't need to know how to get LogSvs
-  // It just 'declare' its dependencies
+  // It just 'declare' its dependencies.
+  // and react-rxdi injector will handle it!
   public constructor(private logService: LogSvs) {
     this.logService.log('creating CountSvs');
   }
 
-  public readonly sum$ = this.addend$.pipe(
-    scan((acc, value) => acc + value, 0)
-  );
+  private sum = new SharedState(0);
 
+  useCountNumber() {
+    const value = this.sum.useValue();
+    return value;
+  }
   public increase() {
     this.logService.log('increasing');
-    this.addend$.next(1);
+    this.sum.setValueWithFn(prev => prev + 1);
   }
 }
 
 export const Demo: React.FC = withDIContainer([CountSvs, LogSvs])(() => {
   const [countService] = useDIConsumer([CountSvs]);
   // auto re-render when the observable emit
-  const sum = useObservable(() => countService.sum$, 0);
+  const sum = countService.useCountNumber();
 
   return (
     <div>
@@ -72,5 +71,5 @@ const Child: React.FC = () => {
 };
 
 export default {
-  title: 'basic',
+  title: 'dependency-injection',
 };

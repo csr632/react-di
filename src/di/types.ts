@@ -14,8 +14,6 @@ export interface IDIConatinerOpts {
 export type IToken = CustomToken<any> | AbstractCtor<object> | symbol;
 export type AbstractCtor<T> = Function & { prototype: T };
 export class CustomToken<ValueType> {
-  private readonly _reflectName = CustomToken.tokenReflectName;
-
   constructor(public readonly tokenId: string | symbol) {}
 
   // Don't use instanceOf, use Reflection instead.
@@ -26,7 +24,8 @@ export class CustomToken<ValueType> {
     );
   }
 
-  private static readonly tokenReflectName = '@@RXDI Token v1@@' as const;
+  private static readonly tokenReflectName = '@@react-rxdi Token v1@@' as const;
+  private readonly _reflectName = CustomToken.tokenReflectName;
 }
 
 export type GetValueTypeByToken<
@@ -163,13 +162,13 @@ export function isFactoryProvider(value: unknown): value is IFactoryProvider {
 export type IContainerLevelPlugin = (
   allProvidedValues: IAllProvidedValues
 ) => void;
-export type ISvsLevelPlugin = () => void;
+export type IDIContainerHook = () => void;
 
 export type IAllProvidedValues = {
   provider: IProvider;
   value: unknown;
 }[];
 
-export interface WithSvsLevelPlugin {
-  pluginHook: ISvsLevelPlugin;
+export interface WithDIContainerHook {
+  useDIContainerHook: IDIContainerHook;
 }

@@ -45,12 +45,11 @@ class LifeCycleMonitorSvs implements WithAutoLifeCycle {
 
   constructor() {
     this.autoLifeCycle.mount$.subscribe(() => {
-      console.log('Child Mounted!');
+      console.log('DIContainer Mounted!');
     });
     this.autoLifeCycle.unMount$.subscribe(() => {
-      console.log('Child unMounted!');
+      console.log('DIContainer unMounted!');
     });
-
     // will auto un-subscribe when host component unMount
     // to avoid memory leak
     this.autoLifeCycle.subscribeInLifeCycle(someObservable$, v => {
@@ -59,7 +58,7 @@ class LifeCycleMonitorSvs implements WithAutoLifeCycle {
   }
 }
 
-// The DIContainer HOC have same lifecycle as Child
+// The DIContainer HOC
 const Child: React.FC = withDIContainer([LifeCycleMonitorSvs])(() => {
   return <p>Child</p>;
 });

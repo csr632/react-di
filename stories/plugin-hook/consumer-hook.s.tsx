@@ -19,7 +19,7 @@ import {
   useObservable,
   useDIConsumer,
 } from 'react-rxdi';
-import { interval, Subject, merge } from 'rxjs';
+import { Subject, merge } from 'rxjs';
 import useSWR from 'swr';
 import { scan, mapTo } from 'rxjs/operators';
 
@@ -44,11 +44,10 @@ class DataSvs implements WithAutoLifeCycle {
   ).pipe(scan((acc, v) => acc + v, 0));
 
   useDataSvsHooks1() {
-    const dataId = useObservable(() => this.sum$, 0);
+    const dataId = useObservable(this.sum$, 0);
     const { data, isValidating } = useSWR(dataId.toString(), mockAPI);
     return { data, isValidating };
   }
-
   inc() {
     this.inc$.next();
   }
@@ -59,7 +58,6 @@ class DataSvs implements WithAutoLifeCycle {
 
 export const Demo: React.FC = withDIContainer([DataSvs])(() => {
   const [dataSvs] = useDIConsumer([DataSvs]);
-
   const { data } = dataSvs.useDataSvsHooks1();
 
   return (

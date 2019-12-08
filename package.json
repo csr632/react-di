@@ -19,8 +19,7 @@
     "react-rxdi": "./src"
   },
   "dependencies": {
-    "inversify": "^5.0.1",
-    "rxjs-hooks": "^0.5.2"
+    "inversify": "^5.0.1"
   },
   "peerDependencies": {
     "react": "^16.12.0",

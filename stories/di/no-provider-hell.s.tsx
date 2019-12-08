@@ -26,7 +26,7 @@
 With react-rxdi, we can avoid all of these. 
 react-rxdi use React context provider to broadcast **injector**, not services. The granularity is bigger. One injector can have multiple services in it.
 As long as services live in the same injector, they can get each other's reference! You don't need to care about the 'declare order'.
-rxdi makes it easy to workaround circular dependency, by using 'pluginHook'.
+react-rxdi makes it easy to workaround circular dependency, by using 'DIContainerHook'.
  */
 
 import React, { useEffect } from 'react';
@@ -34,14 +34,14 @@ import {
   injectable,
   withDIContainer,
   useDIConsumer,
-  WithSvsLevelPlugin,
+  WithDIContainerHook,
 } from 'react-rxdi';
 
 @injectable()
-class Foo implements WithSvsLevelPlugin {
+class Foo implements WithDIContainerHook {
   public qux!: Qux;
 
-  pluginHook() {
+  useDIContainerHook() {
     // circular dependency
     const [qux] = useDIConsumer([Qux]);
     this.qux = qux;
