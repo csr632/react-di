@@ -1,6 +1,6 @@
 # react-svs-di
 
-react-svs-di is a react state managent library with these features:
+react-svs-di is a react state managent library. It helps you build a robust data layer for your app. It comes with these features:
 
 - Typescript first. Get full intellisense and type-checking when:
   - Subscribe shared state
@@ -14,6 +14,8 @@ react-svs-di is a react state managent library with these features:
   > If you don't like/know rxjs, feel free to drop it!
 
 ## Basic example
+
+[![Edit in codesandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/pensive-hamilton-j3511?fontsize=14&hidenavigation=1&theme=dark)
 
 ```tsx
 import React from 'react';
@@ -80,7 +82,7 @@ export const Demo: React.FC = withDIContainer([CountSvs])(() => {
 
 ## Workflow
 
-- Split your app logic and state into multiple services.
+- Split your app logic and state into multiple services:
   - shared state.
   - side effects. Can be async.
     - procedures to update state.
