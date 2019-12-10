@@ -2,11 +2,11 @@
 
 react-svs-di is a react state managent library. It helps you to build a robust data layer for your app. It comes with these features:
 
-- Typescript first. Get full intellisense and type-checking when:
+- Typescript first. Get full power of intellisense and type-checking when:
   - Subscribe shared state
   - Update shared state
   - Manage async works
-    > Using typescript with 'redux-like' state managent library is a cumbersome development experience. Too many boilerplate code(define actions, import actions creator, dispatch action, define reducer, connect, manage effects). And it is hard to get full intellisense and type-checking(string-based action type).
+  > Using typescript with 'redux-like' state managent library is a cumbersome development experience. Too many [boilerplate code](https://github.com/erikras/ducks-modular-redux)(define actions types and action creators, import actions creator, dispatch action, define reducer, connect, manage effects). And it is unintuitive to get intellisense and type-checking to work(because of string-based action type). The type of `dispatch` is dynamic.
 - Dependency injection. We encourage users to 'depend on abstractions, don't depend on implementations'. (dependency inversion principle)
   - We use react context to implement DI, but we [resolve the problem of 'provider hell'](https://csr632.github.io/react-svs-di/?path=/story/no-provider-hell--demo), which is ignored by most 'state management libraries'.
 - Embrace react hooks. Hooks is a booming trend in react community. You can benefit from the community while using react-svs-di. For example, you can [use swr](https://csr632.github.io/react-svs-di/?path=/story/plugin-hook-consumer-hook--demo), which is a fantastic react hook library!
